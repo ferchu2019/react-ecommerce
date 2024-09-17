@@ -1,3 +1,31 @@
+.admin_container{
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem;
+    .form_container{
+        flex: 0 0 360px;
+    }
+    .table_container{
+        flex: 1;
+        padding: 1 rem;
+        .admin_table {
+            border-collapse: collapse;
+            width: 100%;
+
+            th, th {
+                padding: .5rem;
+                border: 1px solid #333;
+            }
+            th{
+                background-color: #333;
+                color: white;
+            }
+            tr:nth-child(even){
+                background-color: #222;
+            }
+        }
+    }
+}
 .admin_form{
     input, textarea, select {
         padding: .5rem 1rem;
@@ -14,5 +42,24 @@
     .input-error{
         color: red;
         font-size: .5rem;
+    }
+    .btn{
+        background-color: bisque;
+        color: black;
+        padding: .5rem 1rem;
+        border-radius: 4px;
+        transition: backgorund-color .3s;
+        cursor: pointer;
+        border: none;
+        outline: none;
+
+        &:disabled{
+            background-color: #333;
+            color: #666;
+            pointer-events: none;
+        }
+        &:hover{
+            background-color: rgb(169, 171, 166);
+        }
     }
 }
