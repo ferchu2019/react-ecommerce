@@ -3,10 +3,10 @@ import "./contact.css"
 export default function Contact() {
   return (
     <div className="contact_container">
-        <form className="contact_form">
+     <form className="contact_form">
         <h2>Escribanos su consulta</h2>
         <div className="input_container">
-            <label>Nombre y Apellido </label>
+            <label htmlFor="fullname">Nombre y Apellido </label>
             <input type="text" name="fullname" id="fullname" required minLength="6" maxLength="50" />
         </div>
         <div className="input_container">
@@ -24,7 +24,7 @@ export default function Contact() {
         <div className="input_container">
             <button type="submit">Enviar</button>
         </div>
-        </form>
+     </form>
         <div className="contact_map">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d113262.71073901864!2d-58.874789589489126!3d-27.486075093428386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94456b79d5bed36b%3A0xfa999f1ef3b40646!2sCorrientes!5e0!3m2!1ses-419!2sar!4v1715543100971!5m2!1ses-419!2sar"

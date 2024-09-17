@@ -4,12 +4,14 @@
     padding: 0;
     box-sizing: border-box;
 }
-body{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    min-height: 100dvh;
-    min-width: 100dvw;
+#root{
     display: flex;
     flex-direction: column;
+    min-width: 100dvw;
+    min-height: 100dvh;
+}
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;    
 }
 
 /* ------- HEADER -------- */
