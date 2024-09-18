@@ -1,0 +1,32 @@
+.admin_table_row{
+    color: black;
+    .image{
+        img{
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    }
+    .name{
+        font-weight: 600;
+    }
+    .description_container{
+        display: -webkit-box;
+        -webkit-line-clamp:3 ;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+    }
+    .price{
+        font-weight: 600;
+    }
+    .date{
+       font-size: .8rem;
+       color: #AAA; 
+    }
+    .actions_container{
+            display: flex;
+            gap: .5rem;
+        }
+    }
+    
