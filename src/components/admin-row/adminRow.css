@@ -1,5 +1,6 @@
 .admin_table_row{
-    color: black;
+    color: #233f4a;
+    font-size: .95rem;
     .image{
         img{
             width: 50px;
@@ -22,7 +23,7 @@
     }
     .date{
        font-size: .8rem;
-       color: #AAA; 
+      
     }
     .actions_container{
             display: flex;

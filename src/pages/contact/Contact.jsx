@@ -1,10 +1,10 @@
 import "./contact.css"
 
 export default function Contact() {
-  return (
-    <div className="contact_container">
+  return (<>
+    <h2>Escribanos su consulta</h2>
+    <div className="contact_container">    
      <form className="contact_form">
-        <h2>Escribanos su consulta</h2>
         <div className="input_container">
             <label htmlFor="fullname">Nombre y Apellido </label>
             <input type="text" name="fullname" id="fullname" required minLength="6" maxLength="50" />
@@ -22,7 +22,7 @@ export default function Contact() {
             <textarea name="textarea" id="textarea"></textarea>
         </div>
         <div className="input_container">
-            <button type="submit">Enviar</button>
+            <button className="contact_btn" type="submit">Enviar</button>
         </div>
      </form>
         <div className="contact_map">
@@ -34,4 +34,4 @@ export default function Contact() {
                 referrerPolicy="no-referrer-when-downgrade"
             />
         </div>
-    </div>)}
+    </div> </>)}

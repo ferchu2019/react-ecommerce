@@ -6,13 +6,10 @@
 
     th, th {
         padding: .5rem;
-        border: 1px solid #333;
+        border: 1px solid #cee9e4;
         }
     th{
-        background-color: #333;
-        color: white;
-        }
-    tr:nth-child(even){
-        background-color: #222;
+        background-color:  #233f4a;
+        color: #f3dab2;
         }
     }

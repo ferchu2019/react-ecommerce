@@ -2,6 +2,7 @@ import AdminRow from '../admin-row/AdminRow';
 import './adminTable.css'
 
 export default function AdminTable({products}) {
+  
   return (
     <table className="admin_table">
       <thead>
@@ -17,9 +18,10 @@ export default function AdminTable({products}) {
       </thead>
       <tbody>
         {products.map (eachProd => {
-          return <AdminRow key={eachProd.id} product={eachProd} />})
-        } 
-      </tbody>        
+          return <AdminRow key={eachProd.id} product={eachProd}/>
+        })
+      }
+      </tbody>       
     </table>
   )
 }

@@ -1,9 +1,9 @@
 import './adminRow.css'
 
-export default function AdminRow(product) {
+export default function AdminRow({product}) {
   return (
     <tr className="admin_table_row">
-      <td><div className="image"><img src={product.image} alt={product.name} /></div></td>
+      <td><div className="image"><img src={product.image} alt={product.name}/></div></td>
       <td><div className="name">{product.name}</div></td>
       <td><div className="description_container">{product.description}</div></td>
       <td><div className="price">{product.price}</div></td>

@@ -1,7 +1,10 @@
 .admin_container{
+    color:#233f4a;
+    font-weight: 500;
     display: flex;
     gap: 1rem;
     padding: 1.5rem;
+    background-image: url(/assets/img/fondos/fondo.png);
     .form_container{
         flex: 0 0 360px;
     }
@@ -9,10 +12,10 @@
 .admin_form{
     input, textarea, select {
         padding: .5rem 1rem;
-        border: 1px solid gray;
+        border: 1px solid  #c6e8e1;
         outline: none;
         font-size: 16px;
-        border-radius: 4px;
+        border-radius: 8px;
     }
     .input_container{
         display: flex;
@@ -24,8 +27,8 @@
         font-size: .5rem;
     }
     .btn{
-        background-color: bisque;
-        color: black;
+        background-color: #233f4a;
+        color: #f3dab2;
         padding: .5rem 1rem;
         border-radius: 4px;
         transition: backgorund-color .3s;
@@ -39,7 +42,7 @@
             pointer-events: none;
         }
         &:hover{
-            background-color: rgb(169, 171, 166);
+            background-color: #284955;
         }
     }
 }

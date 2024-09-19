@@ -18,7 +18,7 @@ export default function AdminProduct() {
   //llamo producto
   async function getProducts() {
     try {
-      const response = await axios.get(`${URL}/products`)
+      const response = await axios.get(`${URL}/products`);
       setProducts(response.data);
       console.log(response.data)
       
