@@ -4,18 +4,33 @@ import "./adminProduct.css"
 import axios from "axios";
 import { useEffect, useState } from "react";
 import AdminTable from "../../components/admin-table/AdminTable";
+import Swal from "sweetalert2";
 
 const URL ="https://66e84eecb17821a9d9dc3463.mockapi.io/api/v1"
 
 export default function AdminProduct() {
 
   const [products, setProducts] = useState([]);
-  
-  const {register, handleSubmit, formState:{errors, isValid}} = useForm();
+
+  const [selectedProduct, setSelectedProduct] =useState(null);
+
+  const {register, setValue, reset, handleSubmit, formState:{errors, isValid}} = useForm();
   
   useEffect(() => {getProducts();}, [])
 
-  //llamo producto
+  useEffect(() => { 
+    if(selectedProduct) {
+      setValue("name", selectedProduct.name), 
+      setValue("price", selectedProduct.price), 
+      setValue("description", selectedProduct.description), 
+      setValue("image", selectedProduct.image),
+      setValue("category", selectedProduct.category),
+      setValue("createdAt", selectedProduct.createdAt)
+      }else{
+          reset()
+        }
+    }, [selectedProduct, setValue, reset])
+
   async function getProducts() {
     try {
       const response = await axios.get(`${URL}/products`);
@@ -26,18 +41,47 @@ export default function AdminProduct() {
       console.log(error)
     }
   }
-  //creo producto nuevo
+ 
+  function deleteProduct (productId) {
+    Swal.fire({title:"Borrar producto", text:"Seguro que quiere borrar el producto?", icon: "warning", showCancelButton: true, reverseButtons:true,}).then (async(result) => {
+      try {
+        if(result.isConfirmed){
+          const response = await axios.delete(`${URL}/products/${productId}`);
+          console.log(response.data);
+          getProducts();
+        }} catch (error) {
+          console.log(error)
+          Swal.fire({title:"Error al borrar", text: "El producto no se pudo borrar", icon:"error"})
+         }})}
+
+  function editFillForm(product){
+    console.log("producto a editar", product);
+    setSelectedProduct(product);
+  }
+  
   async function loadProduct(productData){
    console.log(productData)
    try {
-    const response = await axios.post(`${URL}/products`,productData)
-    console.log(response.data)
+    if(selectedProduct){
+      const {id}= selectedProduct;
+      const response = await axios.put(`${URL}/products/${id}`, productData);
+      console.log(response.data);
+      Swal.fire({ title:"Producto actualizado", text:"El producto fue actualizado correctamente", icon:"success", timer:1500})
+      setSelectedProduct(null)
+
+      }else{
+        const response = await axios.post(`${URL}/products`,productData)
+        console.log(response.data)
+        reset()
+        ;}
+    
     getProducts();
+
    } catch (error) {
     console.log(error)
    }
   }
-  
+
   return (<>
   <div className="admin_container">
     <div className="form_container">
@@ -74,11 +118,13 @@ export default function AdminProduct() {
             <label htmlFor="image">Imagen</label>
             <input type="url" id="image" {...register("image") }/>
           </div>
-          <button className="btn" type="submit" disabled={!isValid}>Cargar producto</button>
+          <div className="input_container">
+             <button className={`btn ${selectedProduct && 'btn-success'}`} type="submit" disabled={!isValid}>{selectedProduct? "Editar":"Cargar producto"}</button>
+          </div> 
       </form>
     </div>
     <div className="table_container">
-      <AdminTable products={products}/>
+      <AdminTable products={products} deleteProduct={deleteProduct} editFillForm={editFillForm}/>
     </div>
   </div>
   </>)

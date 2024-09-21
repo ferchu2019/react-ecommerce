@@ -18,53 +18,16 @@ h2{
             background-image: url(/assets/img/fondos/fondo.png);
             justify-content: center;
             flex: 1;
-            font-size: 16px;
-
-            input, textarea, select {
-                padding: .5rem 1rem;
-                border: 1px solid  #c6e8e1;
-                outline: none;
-                border-radius: 8px;
-            }
-        .input_container{
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-            padding: 5px;
-            }
-        .contact_btn{
-            margin: auto;
-            padding: auto;
-            line-height: 1em;
-            text-align: center;
-            background-color: #233f4a;
-            height: 35px;
-            width: 70%;
-            border: 1px solid  #284955;
-            border-radius: 5px;
-            font-weight: 500;
-            cursor: pointer;
-            color: #f3dab2;
-            &:hover{
-                background-color: #284955 ;
-            }
-            a:link{
-                text-decoration: none;
-                color: #f3dab2;
-            }
-            a:visited{
-                color: #f3dab2;
-            }
-        }
-        }
+            font-size: 16px;        
+          }
         .contact_map{
             iframe{
                 width: 100%;
                 min-height: 400px;
                 object-fit: cover;
-            }
-        }
+            }}
 }
+   
 /* -----VALORES RESPONSIVE ----- */
 
 @media screen and (width<580px){

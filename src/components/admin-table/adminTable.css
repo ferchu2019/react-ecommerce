@@ -4,12 +4,28 @@
     border-collapse: collapse;
     width: 100%;
 
-    th, th {
+    thead, th {
         padding: .5rem;
         border: 1px solid #cee9e4;
         }
     th{
         background-color:  #233f4a;
-        color: #f3dab2;
+        color: #f3dab2;  
         }
+    tr{
+        padding: .1rem;
+        border: 1px solid #cee9e4
     }
+    tr:nth-child(even){ 
+        border-bottom-style:solid;
+        border-bottom-width: 2px;
+        border-bottom-color: #cee9e4;
+        border-top-style:solid;
+        border-top-width: 2px;
+        border-bottom-color: #cee9e4;
+        margin-top: 5px;
+        }    
+    }
+    
+
+    

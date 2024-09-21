@@ -127,6 +127,7 @@ body{
 }
 
 /* ------- MAIN -------- */
+
 .main_container{
     flex-grow: 1;
     width: 100%;
@@ -240,7 +241,42 @@ body{
             }
             }
 }
-
+/* formularios */
+.input_container{
+    display: flex;
+    flex-direction: column; 
+    margin-bottom:8px;
+    label{
+        margin-bottom: 4px;
+        font-size: 14px;
+    }
+    input, textarea, select {
+        border: 1px solid #284955;
+        border-radius: 5px;
+        outline: none;
+        caret-color: #233f4a;
+        padding: 8px 16px;
+        box-shadow: 0 0 2px #cee9e4;
+        font-size: 0.80rem;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    button, input[type="file"]{
+        border: 1px solid  #284955;
+        border-radius: 5px;
+        outline: none;
+        padding: 8px 16px;
+        background-color: white;
+        box-shadow: 0 0 2px  #cee9e4;
+        transition: background-color 0.3s;
+    }
+    button{ 
+        background-color: #233f4a;
+        color: #f3dab2;
+        &:hover{
+        background-color:#284955;
+    }
+    }
+}
 /**----- FOOTER -----**/
 .footer_container{
     display: flex;

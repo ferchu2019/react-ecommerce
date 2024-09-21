@@ -1,6 +1,6 @@
 import './adminRow.css'
 
-export default function AdminRow({product}) {
+export default function AdminRow({product, deleteProduct, editFillForm}) {
   return (
     <tr className="admin_table_row">
       <td><div className="image"><img src={product.image} alt={product.name}/></div></td>
@@ -10,8 +10,8 @@ export default function AdminRow({product}) {
       <td><div className="category">{product.category}</div></td>
       <td><div className="date">{product.createdAt}</div></td>
       <td><div className="actions_container">
-        <button>Editar</button>
-        <button>Eliminar</button>
+        <button onClick={() => editFillForm(product)}>Editar</button>
+        <button onClick={() => deleteProduct(product.id) }>Eliminar</button>
       </div></td>
     </tr>
   )
