@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { NavLink, useParams } from 'react-router-dom'
 import './productDetail.css'
 import { useEffect } from 'react';
 import axios from 'axios';
@@ -37,9 +37,9 @@ export default function ProductDetail() {
         <p>Año de publicación: {product?.createdAt}</p>
         <div className="formas_de_pago">icono Paga con Tarjeta hasta 3</div>
         <div className="formas_de_envio">icono Correo Express</div>
-        <div className="comprar"><button> Añadir al carrito </button></div>
+        <div className="purchase"><button> Añadir al carrito </button></div>
       </div>
-      <button className="boton_volver">Volver</button>
+      <button className="back_btn"><NavLink className="link" to="/">Volver</NavLink></button>
   </article>
 
   )

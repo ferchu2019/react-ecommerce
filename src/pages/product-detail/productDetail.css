@@ -39,11 +39,19 @@
        color: #444;
        padding: 2px;
     }
-    .boton_volver{
+    .back_btn{
         position: absolute;
         bottom: 20px;
         right: 20px;
         border-radius: 10%;
-       
+        .link{
+            &:link{
+                background-color: #233f4a;
+                color: #f3dab2;
+            }
+            &:visited{
+                background-color: #233f4a;
+                color: #f3dab2;
+        }}  
     }  
 }
