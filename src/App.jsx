@@ -7,11 +7,13 @@ import Footer from "./layout/footer/Footer";
 import About from "./pages/about/About";
 import Register from "./pages/register/Register";
 import AdminProduct from "./pages/admin-product/AdminProduct"
+import OrderDialog from "./components/order-dialog/OrderDialog";
 
 
 export default function App() {
   return (
     <>
+    <OrderDialog/>
     <Header />
     <main className="main_container">
       <Routes>
