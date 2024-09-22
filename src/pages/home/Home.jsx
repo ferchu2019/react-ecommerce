@@ -1,16 +1,16 @@
 import ProductGallery from "../../components/product-gallery/ProductGallery";
-
+import "./home.css"
 
 export default function Home() {
  
   return(<>
     <section className="section_banner">
-     <img src="/assets/img/fondos/banner.png" alt="banner" />
-     <div className="banner_info">
-       <h2 className="banner_title">Venus del litoral</h2>
-       <p className="banner_text">Diseño inspirado en los paisajes y la cultura correntina que busca transmitir la esencia de esta tierra extraordinaria. Estas obras nos
+      <div className="image_banner"><img src="/src/assets/banner.png" alt="banner" /></div>
+      <div className="banner_info">
+        <h2 className="banner_title">Venus del litoral</h2>
+        <p className="banner_text">Diseño inspirado en los paisajes y la cultura correntina que busca transmitir la esencia de esta tierra extraordinaria. Estas obras nos
          invitan a sumergirnos en la belleza y la diversidad de esta provincia argentina.</p>
-     </div>
+      </div>
     </section>
     <ProductGallery />
     

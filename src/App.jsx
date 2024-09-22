@@ -8,11 +8,15 @@ import About from "./pages/about/About";
 import Register from "./pages/register/Register";
 import AdminProduct from "./pages/admin-product/AdminProduct"
 import ProductDetail from "./pages/product-detail/ProductDetail";
-
+import OrderDialog from "./components/order-dialog/OrderDialog";
+import { useState } from "react";
 
 export default function App() {
+  const [toggleModal, setToggleModal] = useState (false)
   return (
     <>
+    <button onClick={()=>setToggleModal(!toggleModal)}>Ver carrito</button>
+    <OrderDialog showModal={toggleModal} setToggleModal={setToggleModal}/>
     <Header />
     <main className="main_container">
       <Routes>

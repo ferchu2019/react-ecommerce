@@ -3,11 +3,12 @@ import './productDetail.css'
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useState } from 'react';
+import { useOrder } from '../../context/OrderContext';
 
 const URL = import.meta.env.VITE_SERVER_URL;
 
 export default function ProductDetail() {
-  
+  const {addProduct} = useOrder();
   const [product, setProduct] = useState()
   const {id} = useParams();
 
@@ -37,7 +38,7 @@ export default function ProductDetail() {
         <p>Año de publicación: {product?.createdAt}</p>
         <div className="formas_de_pago">icono Paga con Tarjeta hasta 3</div>
         <div className="formas_de_envio">icono Correo Express</div>
-        <div className="purchase"><button> Añadir al carrito </button></div>
+        <div className="purchase"><button onClick={() => addProduct(product)}> Añadir al carrito </button></div>
       </div>
       <button className="back_btn"><NavLink className="link" to="/">Volver</NavLink></button>
   </article>

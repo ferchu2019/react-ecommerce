@@ -6,7 +6,7 @@ export default function Header() {
     <header className="header_container">
       <input type="checkbox" className="burger_input" id="responsive_menu" />
       <label className="burger_menu" htmlFor="responsive_menu"><div className="burger_line" /></label>
-      <NavLink className="logo_container" to='/'><img className="logo_image" src="/assets/img/logo.png" alt="logo" /></NavLink>
+      <NavLink className="logo_container" to='/'><img className="logo_image" src="/src/assets/logo.png" alt="logo" /></NavLink>
       <span className="logo_name">VENUS DEL LITORAL</span>
       <nav className="nav_header">
         <ul className="nav_list_header">

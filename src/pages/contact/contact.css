@@ -21,6 +21,7 @@ h2{
             font-size: 16px;        
           }
         .contact_map{
+            flex: 1;
             iframe{
                 width: 100%;
                 min-height: 400px;

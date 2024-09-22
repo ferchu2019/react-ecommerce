@@ -15,11 +15,11 @@ export default function Contact() {
         </div>
         <div className="input_container">
             <label htmlFor="phone">Numero de telefono</label>
-            <input type="tel" name="phone" id="phone" />
+            <input type="tel" name="phone" id="phone" minLength="10" maxLength="15"/>
         </div>
         <div className="input_container">
             <label htmlFor="textarea">Dejanos tu consulta</label>
-            <textarea name="textarea" id="textarea"></textarea>
+            <textarea name="textarea" id="textarea" rows={5}></textarea>
         </div>
         <div className="input_container">
             <button className="contact_btn" type="submit">Enviar</button>
