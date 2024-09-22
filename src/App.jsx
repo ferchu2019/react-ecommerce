@@ -10,9 +10,6 @@ import AdminProduct from "./pages/admin-product/AdminProduct"
 import ProductDetail from "./pages/product-detail/ProductDetail";
 
 
-
-
-
 export default function App() {
   return (
     <>
