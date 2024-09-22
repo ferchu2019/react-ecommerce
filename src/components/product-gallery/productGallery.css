@@ -1,0 +1,22 @@
+
+.main_container{
+    flex-grow: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+   }
+.product_section{
+    padding: 1rem;
+        .title_product_section{
+            font-size: 1rem;
+            text-align: center;
+            padding-bottom: 5px;
+            color: #233f4a;
+        }
+}
+.product_container{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}

@@ -1,0 +1,92 @@
+.product_card_container{
+    border: 1px solid  #c6e8e1;
+    padding: 16px;
+    border-radius: 8px;
+    width: 280px;
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+   
+    &:hover {
+        box-shadow: 0 0 6px  #cee9e4;
+    }
+}
+.product_image{
+    position: relative;
+        img{
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .button_quickview{
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            translate: -50%;
+            padding: 0 30px;
+            line-height: 1em;
+            text-align: center;
+            background-color: #233f4a;
+            height: 35px;
+            width: 70%;
+            border: 1px solid  #284955;
+            border-radius: 5px;
+            font-weight: 500;
+            cursor: pointer;
+            color: #f3dab2;
+            &:hover{
+                background-color: #284955 ;
+            }
+            a:link{
+                text-decoration: none;
+                color: #f3dab2;
+            }
+            a:visited{
+                color: #f3dab2;
+            }
+        }
+}
+.product_card_body{
+        .product_category {
+            font-size: 12px;
+            color: #838383;
+        }
+        .product_name{
+            font-size: 1rem; 
+            padding: 10px 0;
+            a {
+                color: #d98181;
+
+            }
+        }
+}
+.product_info{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+     .product_price{
+        color: red;
+     }
+}
+.product_card_footer{
+    padding-top: 14px;
+    display: flex;
+    justify-content: center;    
+        button{
+            color: #f3dab2;
+            font-size: 14px;
+            line-height: 1;
+            text-align: center;
+            border-radius: 5px;
+            font-weight: 500;
+            padding: 12px 20px;
+            border: 1px solid #284955;
+            background-color: #233f4a;
+            cursor: pointer;
+                .fa-cart-shopping{
+                    padding-right: 5px;
+                }
+            &:hover{
+                background-color: #284955 ;
+            }
+            }
+}

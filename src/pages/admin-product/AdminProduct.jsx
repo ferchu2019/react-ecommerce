@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import AdminTable from "../../components/admin-table/AdminTable";
 import Swal from "sweetalert2";
 
-const URL ="https://66e84eecb17821a9d9dc3463.mockapi.io/api/v1"
+const URL = import.meta.env.VITE_SERVER_URL
 
 export default function AdminProduct() {
 

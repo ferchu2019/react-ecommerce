@@ -7,6 +7,10 @@ import Footer from "./layout/footer/Footer";
 import About from "./pages/about/About";
 import Register from "./pages/register/Register";
 import AdminProduct from "./pages/admin-product/AdminProduct"
+import ProductDetail from "./pages/product-detail/ProductDetail";
+
+
+
 
 
 export default function App() {
@@ -16,6 +20,7 @@ export default function App() {
     <main className="main_container">
       <Routes>
         <Route path="/" element={<Home/>}/>
+        <Route path="/product-detail/:id" element={<ProductDetail/>}/>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/about" element={<About/>}/>
