@@ -1,18 +1,50 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const OrderContext = createContext();
 
 export const useOrder = () => useContext(OrderContext);
 
 export default function OrderProvider({children}){
+    const [count, setCount] = useState(0);
     const [order, setOrder] = useState([]);
+    const [toggleModal, setToggleModal] = useState(false)
+    const [total, setTotal] =useState(0)
+
+    useEffect(() => {
+        countItems()
+        totalshopping()    
+        }, [order])
 
     function addProduct(product){
-        console.log("Producto cargado", product.name)
-        setOrder([...order, product.name])
+        console.log("Producto cargado", product)
+        const productExists = order.find(prod => prod.id === product.id); 
+
+        if(productExists){
+            productExists.quantity++;
+            setOrder([...order])
+        }else{
+            product.quantity = 1;
+            setOrder([...order, product])     
+        }
+        
+        Swal.fire({position:'bottom-end', icon:'success', padding:'.5rem',title:"Producto Agregado", width:'300px'})    
     }
+
+    function countItems(){
+        let numberOfItems = 0;
+        for(let item of order){numberOfItems+=item.quantity;}
+        setCount(numberOfItems)
+    }
+
+    function totalshopping(){
+        let total =0;
+        order.forEach(item => {total+=item.price*item.quantity})
+        setTotal(total)
+    }
+
     return(
-        <OrderContext.Provider value={{order,addProduct}}>
+        <OrderContext.Provider value={{order, addProduct, toggleModal, setToggleModal, count, total}}>
             {children}
         </OrderContext.Provider>
     )

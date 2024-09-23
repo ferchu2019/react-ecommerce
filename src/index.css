@@ -48,8 +48,7 @@ body{
         .logo_image{
             height: 44px;
             object-fit: cover;
-        }
-        
+        }     
 }
 
 .nav_header .nav_list_header{
@@ -75,15 +74,35 @@ body{
     align-items: center;
     color: #f3dab2;
 }
-.shop{
+.user{
+    position: relative;
     display: flex;
     padding:1rem;
     .user_name{
         place-content: center;
         padding-right: 5px;
     }
+    .order-count{
+        background-color: crimson;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: .75rem;
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        right:-5px;
+        top: 5px;
+        translate: -50%;
+        border-radius: 50%;
+    }
     .cart_icon{
         font-size: 1.25rem;
+        cursor: pointer;
+        transition: color .25s ease-in-out;
+        &:hover{
+            color: #f59cba;
+        }
     }
     .user_icon{
         display: none;
@@ -253,16 +272,21 @@ body{
                 }
             }
         }
-        .shop{
+        .user{
             position: absolute;
             right: 0;
             .user_name{
                 display: none;
             }
+            .order-count{
+                left: 35px;
+                
+            }
             .user_icon, .cart_icon{
                 display: block;
                 padding: 5px;
                 font-size: 1rem;
+                
             }
         }
     }

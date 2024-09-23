@@ -13,6 +13,8 @@
     animation: showIn .3s ease-in-out forwards;
     
     .modal-content{
+        position: relative;
+        margin: 25% auto;
         overflow: hidden;
         background-color: white;
         color: black;

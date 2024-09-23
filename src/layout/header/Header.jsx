@@ -1,7 +1,12 @@
+import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { NavLink } from "react-router-dom"
+import { useOrder } from "../../context/OrderContext"
 
 
 export default function Header() {
+  const {setToggleModal, count} = useOrder();
+
   return (
     <header className="header_container">
       <input type="checkbox" className="burger_input" id="responsive_menu" />
@@ -27,10 +32,13 @@ export default function Header() {
           </li>
         </ul>
       </nav>
-      <div className="shop">
+      <div className="user">
         <div className="user_name">Nombre usuario</div>
-          <i className="user_icon fas fa-user" />
-          <i className="cart_icon fa-solid fa-cart-shopping" />
+          <div className="order cart_icon">
+            <div className="order-count">{count}</div>
+            <FontAwesomeIcon icon={faCartShopping} onClick = {() => setToggleModal(modalState=>!modalState)} />
+          </div>
+          <div className="avatar user_icon"><FontAwesomeIcon icon={faUser}/></div>
       </div>
     </header>
 
