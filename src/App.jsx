@@ -9,6 +9,7 @@ import Register from "./pages/register/Register";
 import AdminProduct from "./pages/admin-product/AdminProduct"
 import ProductDetail from "./pages/product-detail/ProductDetail";
 import OrderDialog from "./components/order-dialog/OrderDialog";
+import AdminUser from "./pages/admin-user/AdminUser";
 
 export default function App() {
  
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/login" element={<Login/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="admin-product" element={<AdminProduct/>}/>
+        <Route path="admin-user" element={<AdminUser/>}/>
         <Route path="/register" element={<Register/>}/>
       </Routes>
     </main>

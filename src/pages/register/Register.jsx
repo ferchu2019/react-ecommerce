@@ -8,7 +8,6 @@ const URL =import.meta.env.VITE_SERVER_URL
 export default function Register() {
 
   const [user, setUser] = useState([]);
-
   const {register, reset, handleSubmit, formState:{errors,isValid}} = useForm();
 
   useEffect(() => {getUser();}, [])
@@ -41,31 +40,30 @@ export default function Register() {
       <h3>Complete con sus datos personales</h3>
       <form className="register_form"  onSubmit={handleSubmit(newRegister)}>
         <div className="input_container">
-          <label htmlFor='fullname'>Nombre y Apellido </label>
-          <input type="text" name="fullname" id="fullname"/>
-          {errors.fullname?.type === "required" && <div className="input-error">El campo es requerido</div>}
-          {errors.fullname?.type === "minLength" && <div className="input-error">El mínimo de caracteres es 6</div>}   
+          <label htmlFor='name'>Nombre y Apellido </label>
+          <input type="text" name="name" id="name"/>
+          {errors.name?.type === "required" && <div className="input-error">El campo es requerido</div>}
+          {errors.name?.type === "minLength" && <div className="input-error">El mínimo de caracteres es 6</div>}   
         </div>
         <div className="input_container">
           <label htmlFor="email">Correo electronico</label>
-          <input type="email" name="email" id="email" required="" placeholder="nombre@misitio.com" minLength={10} maxLength={50}pattern="[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$" 
-          />
+          <input type="email" name="email" id="email" {...register("email", {required:true, minLength:10, maxLength:50})}/>
         </div>
         <div className="input_container">
           <label htmlFor="password">Contraseña</label>
-          <input type="password" name="password" id="password" required=""  minLength={6} maxLength={10}/>
+          <input type="password" name="password" id="password" {...register("password", {required:true, minLength:5, maxLength:8})}/>
         </div>
-        {/* <div className="input_container">
-          <label htmlFor="password">Repetir Contraseña</label>
-          <input type="password" name="password" id="password" required="" />
-        </div> */}
+        <div className="input_container">
+          <label htmlFor="phone">Telefono</label>
+          <input type="tel" name="phone" id="phone" {...register("phone")}/>
+        </div> 
         <div className="input_container">
           <label htmlFor="date_birth">Fecha de Nacimiento</label>
-          <input type="date" name="date_birth" id="date_birth" required="" />
+          <input type="date" name="date_birth" id="date_birth" {...register("date_birth", {required:true})} />
         </div>
         <div className="input_container">
           <label htmlFor="country">Pais</label>
-          <select name="country" id="country" required="">
+          <select name="country" id="country" {...register("country")}>
             <option value="" selected="">Elija una opción</option>
             <option value="ARG">Argentina</option>
             <option value="BOL">Bolivia</option>
@@ -97,7 +95,7 @@ export default function Register() {
         </div>
         <div className="input_container">
           <label htmlFor="avatar">Foto avatar</label>
-          <input type="file" name="avatar" id="avatar" accept="image/*" />
+          <input type="url" name="avatar" id="avatar" {...register("avatar")} />
         </div>
         <div className="input_container">
           <button type="submit">Enviar</button>
