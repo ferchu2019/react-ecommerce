@@ -17,11 +17,12 @@ export default function OrderDialog() {
                 <div className="modal-body">
                     <ul className="order-list">
                         {order.map((item) => <OrderItem key={item.id} item={item} />)}
-                        <li className='list-total'>$ {total}</li>
+                        <br />
+                        <li className='list-total'>Total compra $ {total}</li>
                     </ul>
                 </div>
                 <div className="modal-footer">
-                    <button  onClick = {() => setToggleModal(!toggleModal)}>cerrar</button>
+                    <button  onClick = {() => setToggleModal(!toggleModal)}>Cerrar</button>
                     <button >Finalizar compra</button>
                 </div>
             </div>

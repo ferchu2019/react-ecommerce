@@ -43,12 +43,21 @@ export default function OrderProvider({children}){
         setTotal(total)
     }
 
-    function removeProduct(){
+    function removeShopItem(idProd){
+        const index = order.findIndex(prod => prod.idProd === idProd);
+        const orderCopy = [... order];
+        orderCopy.splice(index,1)
+        setOrder(orderCopy)
+    }
 
+    function changeItemQuantity(idProd, inputValue){
+        const product = order.find(prod => prod.idProd === idProd);
+        product.quantity = inputValue;
+        setOrder([...order])
     }
 
     return(
-        <OrderContext.Provider value={{order, addProduct, toggleModal, setToggleModal, count, total}}>
+        <OrderContext.Provider value={{order, addProduct, toggleModal, setToggleModal, count, total, removeShopItem, changeItemQuantity}}>
             {children}
         </OrderContext.Provider>
     )
