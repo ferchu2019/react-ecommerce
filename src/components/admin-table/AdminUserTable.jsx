@@ -1,7 +1,7 @@
 import './adminTable.css'
 import AdminUserRow from '../admin-row/AdminUserRow'
 
-export default function AdminUserTable() {
+export default function AdminUserTable({users, deleteUser, editFillForm}) {
   return (
     <table className="admin_table">
     <thead>
@@ -15,7 +15,11 @@ export default function AdminUserTable() {
       </tr>
     </thead>
     <tbody>
-        <AdminUserRow />
+    {users.map (eachUser => {
+          return <AdminUserRow key={eachUser.id} users={eachUser} deleteUser={deleteUser}
+          editFillForm={editFillForm}/>
+        })
+      }
     </tbody>       
   </table>
   )

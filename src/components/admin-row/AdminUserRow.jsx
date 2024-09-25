@@ -1,6 +1,6 @@
 import './adminRow.css'
 
-export default function AdminUserRow() {
+export default function AdminUserRow({user, deleteUser, editFillForm}) {
   return (
     <tr className="admin_table_row">
     <td><div className="name">{user.name}</div></td>
@@ -11,8 +11,8 @@ export default function AdminUserRow() {
     <td><div className="country">{user.country}</div></td>
     <td><div className="image"><img src={user.image} alt={user.name}/></div></td>    
     <td><div className="actions_container">
-      <button >Editar</button>
-      <button >Eliminar</button>
+    <button onClick={() => editFillForm(user)}>Editar</button>
+    <button onClick={() => deleteUser(user.id)}>Eliminar</button>
     </div></td>
   </tr>
   )

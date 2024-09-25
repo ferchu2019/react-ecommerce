@@ -12,7 +12,7 @@ export default function OrderDialog() {
         <div className="modal-overlay" onClick = {() => setToggleModal(!toggleModal)}>
             <div className="modal-content" onClick = {(e) => e.stopPropagation()}>
                 <div className="modal-header">
-                    Titulo
+                   Orden de compra
                 </div>
                 <div className="modal-body">
                     <ul className="order-list">
@@ -21,8 +21,8 @@ export default function OrderDialog() {
                     </ul>
                 </div>
                 <div className="modal-footer">
-                    <button onClick = {() => setToggleModal(!toggleModal)}>cerrar</button>
-                    <button>Finalizar compra</button>
+                    <button  onClick = {() => setToggleModal(!toggleModal)}>cerrar</button>
+                    <button >Finalizar compra</button>
                 </div>
             </div>
         </div>

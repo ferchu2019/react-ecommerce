@@ -44,7 +44,24 @@
             }
         }
     }
-}
+    .modal-footer{
+        button{
+            border: 1px solid  #284955;
+            border-radius: 5px;
+            outline: none;
+            padding: 8px 16px;
+            margin: 5px;
+            background-color: white;
+            box-shadow: 0 0 2px  #cee9e4;
+            transition: background-color 0.3s;
+            background-color: #233f4a;
+            color: #f3dab2;
+
+            &:hover{
+            background-color:#284955;
+             }
+         }
+}}
 @keyframes showIn {
     from {opacity: 0;}to{opacity: 1}
 }

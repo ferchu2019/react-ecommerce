@@ -43,6 +43,10 @@ export default function OrderProvider({children}){
         setTotal(total)
     }
 
+    function removeProduct(){
+
+    }
+
     return(
         <OrderContext.Provider value={{order, addProduct, toggleModal, setToggleModal, count, total}}>
             {children}
