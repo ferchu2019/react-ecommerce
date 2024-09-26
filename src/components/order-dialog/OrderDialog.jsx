@@ -18,7 +18,7 @@ export default function OrderDialog() {
                     <ul className="order-list">
                         {order.map((item) => <OrderItem key={item.id} item={item} />)}
                         <br />
-                        <li className='list-total'>Total compra $ {total}</li>
+                        <li className='order-total'>Total compra <strong>$ {total}</strong></li>
                     </ul>
                 </div>
                 <div className="modal-footer">

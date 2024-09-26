@@ -85,7 +85,7 @@ export default function AdminProduct() {
   return (<>
   <div className="admin_container">
     <div className="form_container">
-      <h1>Admin Product</h1>
+      <h1>Administración de Productos</h1>
       <form className="admin_form" onSubmit={handleSubmit(loadProduct)}>
           <div className="input_container">
             <label htmlFor="name">Nombre Producto</label>

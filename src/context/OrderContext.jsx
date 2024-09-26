@@ -43,15 +43,13 @@ export default function OrderProvider({children}){
         setTotal(total)
     }
 
-    function removeShopItem(idProd){
-        const index = order.findIndex(prod => prod.idProd === idProd);
-        const orderCopy = [... order];
-        orderCopy.splice(index,1)
-        setOrder(orderCopy)
+    function removeShopItem(id){
+        const orderFiltered = order.filter(prod => prod.id !== id)
+        setOrder(orderFiltered)
     }
 
-    function changeItemQuantity(idProd, inputValue){
-        const product = order.find(prod => prod.idProd === idProd);
+    function changeItemQuantity(id, inputValue){
+        const product = order.find(prod => prod.id === id);
         product.quantity = inputValue;
         setOrder([...order])
     }

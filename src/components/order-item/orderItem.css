@@ -18,6 +18,9 @@
     }
     .item-count{
         font-weight: 500;
+        .item-input{
+            width: 50px;
+        }
     }
     .item-actions{
         color: #333;

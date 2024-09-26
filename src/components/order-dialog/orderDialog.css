@@ -18,7 +18,7 @@
         overflow: hidden;
         background-color: white;
         color: black;
-        padding: 1rem;
+        padding: 1.5rem;
         border-radius: .25rem;
         box-shadow: 0 0 10px rgba(0,0,0,.1);
         width: calc(100%-2rem);
@@ -26,45 +26,53 @@
         opacity: 0;
         transition: opacity .3s ease-in-out;
         animation: fadeIn .3s ease-in-out forwards;
-    }
-    .modal-header{
+        transform: translateY(50px);
+        .modal-header{
         font-size: 1.5rem;
         font-weight: 700;
         margin-bottom: 1rem;
-    }
-    .modal-body{
-       margin-bottom: 1rem;
-        .order-list{
-            list-style: none;
-            .order-item{
-                padding: .25rem 1rem;
-                &:not(:last-child){
-                    border-bottom: 1px solid #dddaaa;
+        margin-left: 1rem;
+        }
+        .modal-body{
+            margin-bottom: 1rem;
+            .order-list{
+                list-style: none;
+                .order-item{
+                    padding: .25rem 1rem;
+                    &:not(:last-child){border-bottom: 1px solid #dddaaa;}
+                }
+                .order-total{
+                    text-align: right;
+                    font-size: 1.25rem;
+                    padding: .5rem 1rem;
+                    border-top: 1px solid #233f4a;
+                }
+             }
+        }
+        .modal-footer{
+            button{
+                border: 1px solid  #284955;
+                border-radius: 5px;
+                outline: none;
+                padding: 8px 16px;
+                margin: 5px;
+                background-color: white;
+                box-shadow: 0 0 2px  #cee9e4;
+                transition: background-color 0.3s;
+                background-color: #233f4a;
+                color: #f3dab2;
+
+                &:hover{
+                background-color:#284955;
                 }
             }
         }
     }
-    .modal-footer{
-        button{
-            border: 1px solid  #284955;
-            border-radius: 5px;
-            outline: none;
-            padding: 8px 16px;
-            margin: 5px;
-            background-color: white;
-            box-shadow: 0 0 2px  #cee9e4;
-            transition: background-color 0.3s;
-            background-color: #233f4a;
-            color: #f3dab2;
-
-            &:hover{
-            background-color:#284955;
-             }
-         }
-}}
+}
 @keyframes showIn {
     from {opacity: 0;}to{opacity: 1}
 }
 @keyframes fadeIn {
-    to{opacity: 1;}
+    to{opacity: 1;
+       transform: translateY(0) ; }
 }
