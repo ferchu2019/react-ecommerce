@@ -2,81 +2,41 @@ import './register.css'
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import Swal from "sweetalert2";
-import AdminUserTable from '../../components/admin-table/AdminUserTable';
 
 const URL =import.meta.env.VITE_SERVER_URL
 
 export default function Register() {
+   
+  const [users, setUsers] = useState([]);
 
-  const [user, setUser] = useState([]);
-  const [selectedUser, setSelectedUser] =useState(null);
-  const {register, reset, setValue, handleSubmit, formState:{errors,isValid}} = useForm();
-
-  useEffect(() => {getUser();}, [])
-
-  useEffect(() => { 
-    if(selectedUser) {
-      setValue("name", selectedUser.name), 
-      setValue("email", selectedUser.email), 
-      setValue("password", selectedUser.password), 
-      setValue("phone", selectedUser.phone),
-      setValue("date_birth", selectedUser.date_birth),
-      setValue("country", selectedUser.country)
-      setValue("avatar", selectedUser.avatar)
-    }else{
-          reset()
-        }
-    }, [selectedUser, setValue, reset])
+    const {register, reset, handleSubmit, formState:{errors, isValid}} = useForm();
   
-  async function getUser() {
+  useEffect(() => {getUsers();}, [])
+
+  async function getUsers() {
     try {
       const response = await axios.get(`${URL}/users`);
-      setUser(response.data);
+      setUsers(response.data);
       console.log(response.data)
+      
     } catch (error) {
       console.log(error)
     }
   }
-  
-  function deleteUser (userId) {
-    Swal.fire({title:"Borrar usuario", text:"Seguro quiere borrar el usuario", icon: "warning", showCancelButton: true, reverseButtons:true,}).then (async(result) => {
-    try {
-      if(result.isConfirmed){
-        const response = await axios.delete(`${URL}/users/${userId}`);
-        console.log(response.data);
-        getUser();
-      }} catch (error) {
-        console.log(error)
-        Swal.fire({title:"Error al borrar", text: "El usuario no se pudo borrar", icon:"error"})
-       }})}
-
-    function editFillForm(users){
-      console.log("usuario a editar", users);
-      setSelectedUser(users);
-     }
-
-  async function newRegister(userData){
-    console.log(userData)
-    try {
-     if(selectedUser){
-        const {id}= selectedUser;
-        const response = await axios.put(`${URL}/users/${id}`, userData);
-        console.log(response.data);
-        Swal.fire({ title:"Producto actualizado", text:"El producto fue actualizado correctamente", icon:"success", timer:1500})
-        setSelectedUser(null)
-     }else{
-        const response = await axios.post(`${URL}/users`,userData)
-        console.log(response.data)
-        reset()
-        ;}
-       
-      getUser(<AdminUserTable/>);
    
-      } catch (error) {console.log(error)}
+  async function newRegister(userData){
+   console.log(userData)
+   try {
+      const response = await axios.post(`${URL}/users`,userData)
+        console.log(response.data)
+        
+      } catch (error) {
+        console.log(error)
+      }
+      reset()
+      getUsers();
+  }
 
-
-}
 
   return (
     <div className="register_container">

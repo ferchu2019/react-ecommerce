@@ -19,11 +19,17 @@
             display: flex;
             flex-direction: column;
             gap: 10px;
+                .product_name{
+                    padding: 10px;
+                }
                 .item_image{
                     width: 100%;
                     height: 100%;
                     object-fit: cover;
                 }
+        }
+        .purchase{
+            margin: 10px
         }
         button{ 
             background-color: #233f4a;
