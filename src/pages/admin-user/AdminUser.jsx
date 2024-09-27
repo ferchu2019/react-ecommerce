@@ -42,6 +42,10 @@ export default function AdminUser() {
     }
   }
  
+  function putoputo(){
+    console.log("re puto!");
+  }
+
   function deleteUser(id) {
     Swal.fire({title:"Borrar usuario", text:"Seguro que quiere borrar el usuario?", icon: "warning", showCancelButton: true, reverseButtons:true,}).then (async(result) => {
       try {
@@ -52,7 +56,9 @@ export default function AdminUser() {
         }} catch (error) {
           console.log(error)
           Swal.fire({title:"Error al borrar", text: "El usuario no se pudo borrar", icon:"error"})
-         }})}
+         }})
+
+    }
 
   function editFillForm(users){
     console.log("producto a editar", users);
@@ -82,7 +88,7 @@ export default function AdminUser() {
     <form className="admin_form"  onSubmit={handleSubmit(editedUser)}>
         <div className="input_container">
           <label htmlFor='name'>Nombre y Apellido </label>
-          <input type="text" name="name" id="name" />
+          <input type="text" name="name" id="name" {...register("name", {required:true, minLength:10, maxLength:50})}/>
         </div>
         <div className="input_container">
           <label htmlFor="email">Correo electronico</label>
@@ -142,7 +148,7 @@ export default function AdminUser() {
      </form>
     </div>
     <div className="table_container">
-      <AdminUserTable users={users} deleteUser={deleteUser} editFillForm={editFillForm}/>
+      <AdminUserTable users={users} deleteUser={deleteUser} editFillForm={editFillForm} putoputo={putoputo}/>
     </div>
   </div>
   </>)

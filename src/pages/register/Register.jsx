@@ -33,8 +33,8 @@ export default function Register() {
       } catch (error) {
         console.log(error)
       }
-      reset()
       getUsers();
+      reset();
   }
 
 
@@ -102,7 +102,7 @@ export default function Register() {
           <input type="url" name="avatar" id="avatar" {...register("avatar")} />
         </div>
         <div className="input_container">
-        <button type="submit" disabled={!isValid}>Cargar nuevo</button>
+        <button type="submit" disabled={!isValid}>Cargar nuevo usuario</button>
         </div>
      </form>
   </div>
