@@ -2,7 +2,7 @@ import './adminTable.css'
 import AdminUserRow from '../admin-row/AdminUserRow'
 
 export default function AdminUserTable({users, deleteUser, editFillForm}) {
-  return (
+  return (<div className="table_container">
     <table className="admin_table">
     <thead>
       <tr>
@@ -23,5 +23,6 @@ export default function AdminUserTable({users, deleteUser, editFillForm}) {
                
     </tbody>       
   </table>
+  </div>
   )
 }

@@ -3,7 +3,7 @@ import './adminTable.css'
 
 export default function AdminTable({products, deleteProduct, editFillForm}) {
   
-  return (
+  return (<div className="table_container">
     <table className="admin_table">
       <thead>
         <tr>
@@ -24,5 +24,6 @@ export default function AdminTable({products, deleteProduct, editFillForm}) {
       }
       </tbody>       
     </table>
+    </div>
   )
 }

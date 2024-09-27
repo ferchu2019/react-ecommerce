@@ -1,0 +1,48 @@
+.title_about{
+    font-size: 1rem;
+    padding: 1rem;
+    color: #233f4a;
+    text-align: center;
+}
+.about_proyect, .about_me{
+    width: 80%;
+    margin: auto;
+    padding: 10px;
+}
+.about_me{
+    display: flex;
+    flex: 1;
+    gap: 20px;
+    .img_me{
+        height: 200px;
+        width: 200px;
+        object-fit: cover;
+    }
+    .describe_me{
+        padding: 25px;
+        text-align: justify;
+    }
+}
+@media screen and (width <=580px) {
+    .main_container{
+        margin-top: 30px;
+    }
+    .about_me{
+        flex-direction: column;
+    }
+}
+@media screen and (width <=900px) {
+    .main_container{
+        font-size: 0.75rem;
+        .about_me{
+            width: 90%;
+            align-items: start;
+            .img_me{
+                height: 150px;
+            }
+            .describe_me{
+                text-align: left;
+            }
+        }
+    }
+}

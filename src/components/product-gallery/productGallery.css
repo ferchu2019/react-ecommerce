@@ -16,6 +16,8 @@
 }
 .product_container{
     display: flex;
+    width: 80%;
+    margin: auto;
     gap: 1rem;
     flex-wrap: wrap;
     justify-content: center;

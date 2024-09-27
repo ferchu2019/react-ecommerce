@@ -42,10 +42,6 @@ export default function AdminUser() {
     }
   }
  
-  function putoputo(){
-    console.log("re puto!");
-  }
-
   function deleteUser(id) {
     Swal.fire({title:"Borrar usuario", text:"Seguro que quiere borrar el usuario?", icon: "warning", showCancelButton: true, reverseButtons:true,}).then (async(result) => {
       try {
@@ -148,7 +144,7 @@ export default function AdminUser() {
      </form>
     </div>
     <div className="table_container">
-      <AdminUserTable users={users} deleteUser={deleteUser} editFillForm={editFillForm} putoputo={putoputo}/>
+      <AdminUserTable users={users} deleteUser={deleteUser} editFillForm={editFillForm}/>
     </div>
   </div>
   </>)

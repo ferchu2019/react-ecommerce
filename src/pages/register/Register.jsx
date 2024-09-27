@@ -51,7 +51,7 @@ export default function Register() {
         </div>
         <div className="input_container">
           <label htmlFor="email">Correo electronico</label>
-          <input type="email" name="email" id="email" {...register("email", {required:true, minLength:10, maxLength:50})}/>
+          <input type="email" name="email" id="email" {...register("email", {required:true, minLength:10, maxLength:50, pattern:"[A-Za-z0-9._+\-']+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}$"})}/>
         </div>
         <div className="input_container">
           <label htmlFor="password">Contraseña</label>
