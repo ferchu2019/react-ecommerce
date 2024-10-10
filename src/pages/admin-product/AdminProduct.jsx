@@ -72,6 +72,7 @@ export default function AdminProduct() {
       }else{
         const response = await axios.post(`${URL}/products`,productData)
         console.log(response.data)
+        Swal.fire({ title:"Producto creado", text:"El producto fue creado correctamente", icon:"success", timer:1500})
         reset()
         ;}
     
