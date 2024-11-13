@@ -4,12 +4,15 @@ import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { useUser } from '../../context/UserContext';
 
-const URL = import.meta.env.VITE_SERVER_URL
+const URL = import.meta.env.VITE_LOCAL_SERVER;
 
 export default function AdminUser() {
 
   const [users, setUsers] = useState([]);
+
+  const {token} = useUser();
 
   const [selectedUser, setSelectedUser] =useState(null);
 
@@ -33,7 +36,7 @@ export default function AdminUser() {
 
   async function getUsers() {
     try {
-      const response = await axios.get(`${URL}/users`);
+      const response = await axios.get(`${URL}/users`, {headers:{Authorization: token}});
       setUsers(response.data);
       console.log(response.data)
       

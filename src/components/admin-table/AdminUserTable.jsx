@@ -9,7 +9,6 @@ export default function AdminUserTable({users, deleteUser, editFillForm}) {
         <th>Nombre y Apellido</th>
         <th>Correo electronico</th>
         <th>Fecha de nacimiento</th>
-        <th>Contraseña</th>
         <th>Telefono</th>
         <th>Pais</th>
         <th>Foto</th>

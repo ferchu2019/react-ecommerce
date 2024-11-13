@@ -2,10 +2,12 @@ import { faCartShopping, faUser } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { NavLink } from "react-router-dom"
 import { useOrder } from "../../context/OrderContext"
+import { useUser } from "../../context/UserContext";
 
 
 export default function Header() {
   const {setToggleModal, count} = useOrder();
+  const {user, logout} = useUser();
 
   return (
     <header className="header_container">
@@ -27,23 +29,32 @@ export default function Header() {
           <li className="nav_header_item">
             <NavLink className="nav_header_link" to='./contact'>Contacto</NavLink>
           </li>
-          <li className="nav_header_item">
-            <NavLink className="nav_header_link" to='/admin-product'>Administración de productos</NavLink>
-          </li>
-          <li className="nav_header_item">
-            <NavLink className="nav_header_link" to='/admin-user'>Administración de usuarios</NavLink>
-          </li>
+          {
+            user?.role === "admin" && <>
+            <li className="nav_header_item">
+                <NavLink className="nav_header_link" to='/admin-product'>Administración de productos</NavLink>
+            </li>
+            <li className="nav_header_item">
+                <NavLink className="nav_header_link" to='/admin-user'>Administración de usuarios</NavLink>
+            </li>
+            </>
+          }
+         
         </ul>
       </nav>
       <div className="user">
-        <div className="user_name">Nombre usuario</div>
-          <div className="order cart_icon">
-            <div className="order-count">{count}</div>
-            <FontAwesomeIcon icon={faCartShopping} onClick = {() => setToggleModal(modalState=>!modalState)} />
-          </div>
-          <div className="avatar user_icon"><FontAwesomeIcon icon={faUser}/></div>
+        <div className="user_name">
+          <NavLink className="nav_header_link" to='/login'>Login</NavLink>
+       
+          { /*<NavLink className="nav_header_link" to='/login'>{user?.name || "usuario"}</NavLink> */}
+        </div>
+        <div className="order cart_icon">
+          <div className="order-count">{count}</div>
+          <FontAwesomeIcon icon={faCartShopping} onClick = {() => setToggleModal(modalState=>!modalState)} />
+        </div>
+        <div className="avatar user_icon"><NavLink className="nav_header_link" to="/login"><FontAwesomeIcon icon={faUser}/></NavLink></div>
       </div>
     </header>
+    )}
 
-  )
-}
+  

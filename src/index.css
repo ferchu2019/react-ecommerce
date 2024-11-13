@@ -81,6 +81,9 @@ body{
     .user_name{
         place-content: center;
         padding-right: 5px;
+        .nav_header_link{
+            text-decoration: none;
+        }
     }
     .order-count{
         background-color: crimson;
