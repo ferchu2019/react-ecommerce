@@ -3,7 +3,8 @@ import ProductCard from '../product-card/ProductCard';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const URL = import.meta.env.VITE_SERVER_URL;
+
+const URL = import.meta.env.VITE_LOCAL_SERVER;
 
 export default function ProductGallery() {
     const [productsGallery, setProductsGallery] = useState([]);
@@ -13,7 +14,7 @@ export default function ProductGallery() {
         try {
          const response = await axios.get(`${URL}/products`) 
          console.log(response)
-         setProductsGallery(response.data)
+         setProductsGallery(response.data.products)
         
         } catch (error) {
             alert("Error al obtener producto")

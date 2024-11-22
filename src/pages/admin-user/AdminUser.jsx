@@ -41,6 +41,12 @@ export default function AdminUser() {
       console.log(response.data)
       
     } catch (error) {
+      if(error.response.status === 401){
+        alert("Usuario no autorizado");
+        logout();
+        return;
+      }
+      alert("Error al obtener usuarios")
       console.log(error)
     }
   }
@@ -68,8 +74,8 @@ export default function AdminUser() {
    console.log(userData)
    try {
     if(selectedUser){
-      const {id}= selectedUser;
-      const response = await axios.put(`${URL}/users/${id}`, userData);
+      const {_id}= selectedUser;
+      const response = await axios.put(`${URL}/users/${_id}`, userData);
       console.log(response.data);
       Swal.fire({ title:"Usuario actualizado", text:"El usuario fue actualizado correctamente", icon:"success", timer:1500})
       setSelectedUser(null)

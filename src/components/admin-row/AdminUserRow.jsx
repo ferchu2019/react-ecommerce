@@ -11,7 +11,7 @@ export default function AdminUserRow({users, deleteUser, editFillForm}) {
     <td><div className="image"><img src={users.image} alt={users.name}></img></div></td>    
     <td><div className="actions_container">
     <button onClick={() => editFillForm(users)}>Editar</button>
-    <button onClick={() => deleteUser(users.id)}>Eliminar</button>
+    <button onClick={() => deleteUser(users._id)}>Eliminar</button>
     </div></td>
   </tr>
   )

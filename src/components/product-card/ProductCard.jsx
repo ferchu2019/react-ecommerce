@@ -12,7 +12,7 @@ export default function ProductCard({prod}) {
       <div className="product_card_header">
         <div className="product_image">
           <img src={prod.image} alt={prod.name} />
-          <button className="button_quickview"><NavLink to={`/product-detail/${prod.id}`}>Ver mas</NavLink></button>
+          <button className="button_quickview"><NavLink to={`/product-detail/${prod._id}`}>Ver mas</NavLink></button>
         </div>
       </div>
       <div className="product_card_body">

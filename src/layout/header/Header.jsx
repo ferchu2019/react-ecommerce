@@ -39,22 +39,28 @@ export default function Header() {
             </li>
             </>
           }
-         
+          {
+          user?
+          (<li className="nav_header_item">
+            <NavLink className="nav_header_link" onClick={logout}>Logout</NavLink>
+          </li>) :
+          (<li className="nav_header_item">
+            <NavLink className="nav_header_link" to='./login'>Login</NavLink>
+          </li>)
+          }
         </ul>
       </nav>
       <div className="user">
         <div className="user_name">
-          <NavLink className="nav_header_link" to='/login'>Login</NavLink>
-       
-          { /*<NavLink className="nav_header_link" to='/login'>{user?.name || "usuario"}</NavLink> */}
+          {user?.name || "usuario"}
         </div>
         <div className="order cart_icon">
           <div className="order-count">{count}</div>
           <FontAwesomeIcon icon={faCartShopping} onClick = {() => setToggleModal(modalState=>!modalState)} />
         </div>
-        <div className="avatar user_icon"><NavLink className="nav_header_link" to="/login"><FontAwesomeIcon icon={faUser}/></NavLink></div>
+        <div className="avatar user_icon"><FontAwesomeIcon icon={faUser}/></div>
       </div>
     </header>
-    )}
-
+    )
+  }
   

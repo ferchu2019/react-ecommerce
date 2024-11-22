@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import AdminTable from "../../components/admin-table/AdminTable";
 import Swal from "sweetalert2";
 
-const URL = import.meta.env.VITE_SERVER_URL
+const URL = import.meta.env.VITE_LOCAL_SERVER;
 
 export default function AdminProduct() {
 
@@ -14,16 +14,18 @@ export default function AdminProduct() {
 
   const [selectedProduct, setSelectedProduct] =useState(null);
 
+  const [categories, setCategories] = useState([]);
+
   const {register, setValue, reset, handleSubmit, formState:{errors, isValid}} = useForm();
   
-  useEffect(() => {getProducts();}, [])
+  useEffect(() => {getProducts(); getCategories();}, [])
 
   useEffect(() => { 
     if(selectedProduct) {
       setValue("name", selectedProduct.name), 
       setValue("price", selectedProduct.price), 
       setValue("description", selectedProduct.description), 
-      setValue("image", selectedProduct.image),
+      //setValue("image", selectedProduct.image),
       setValue("category", selectedProduct.category),
       setValue("createdAt", selectedProduct.createdAt)
       }else{
@@ -31,10 +33,22 @@ export default function AdminProduct() {
         }
     }, [selectedProduct, setValue, reset])
 
+  async function getCategories() {
+    try {
+      const response = await axios.get(`${URL}/categories`);
+      console.log(response.data);
+      setCategories(response.data.categories)
+      
+    } catch (error) {
+      console.log(error)
+      Swal.fire({title:"Error al cargar", text: "No se pudieron cargar las categorias", icon:"error"})
+    }
+  }
+
   async function getProducts() {
     try {
       const response = await axios.get(`${URL}/products`);
-      setProducts(response.data);
+      setProducts(response.data.products);
       console.log(response.data)
       
     } catch (error) {
@@ -63,7 +77,7 @@ export default function AdminProduct() {
    console.log(productData)
    try {
     if(selectedProduct){
-      const {id}= selectedProduct;
+      const {_id: id}= selectedProduct;
       const response = await axios.put(`${URL}/products/${id}`, productData);
       console.log(response.data);
       Swal.fire({ title:"Producto actualizado", text:"El producto fue actualizado correctamente", icon:"success", timer:1500})
@@ -106,9 +120,7 @@ export default function AdminProduct() {
           <div className="input_container">
             <label htmlFor="category">Categoría</label>
             <select {...register("category")}>
-              <option value="imagenes">Imagen digital</option>
-              <option value="stickers">Stickers</option>
-              <option value="impresiones">Impresiones</option>
+              {categories.map(cat => (<option key={cat._id} value={cat.name}>{cat.viewValue}</option>))}
             </select>
           </div>
           <div className="input_container">

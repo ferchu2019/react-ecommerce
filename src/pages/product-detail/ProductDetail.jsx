@@ -6,19 +6,20 @@ import { useState } from 'react';
 import { useOrder } from '../../context/OrderContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCreditCard, faTruck } from '@fortawesome/free-solid-svg-icons';
+import { formatDate } from '../../utils/formatDate';
 
-const URL = import.meta.env.VITE_SERVER_URL;
+const URL = import.meta.env.VITE_LOCAL_SERVER;
 
 export default function ProductDetail() {
   const {addProduct} = useOrder();
   const [product, setProduct] = useState()
-  const {id} = useParams();
+  const {_id} = useParams();
 
   useEffect(() => {getProduct();},[])
 
   async function getProduct() {
     try {
-      const response = await axios.get(`${URL}/products/${id}`)
+      const response = await axios.get(`${URL}/products/${_id}`)
       setProduct(response.data)
 
     } catch (error) {
