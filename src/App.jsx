@@ -4,7 +4,7 @@ import Contact from "./pages/contact/Contact";
 import Login from "./pages/login/Login";
 import About from "./pages/about/About";
 import Register from "./pages/register/Register";
-import AdminProduct from "./pages/admin-product/AdminProduct"
+import AdminProduct from "./pages/admin-product/AdminProduct";
 import ProductDetail from "./pages/product-detail/ProductDetail";
 import AdminUser from "./pages/admin-user/AdminUser";
 import Layout from "./layout/Layout";

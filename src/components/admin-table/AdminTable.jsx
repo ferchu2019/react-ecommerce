@@ -18,7 +18,7 @@ export default function AdminTable({products, deleteProduct, editFillForm}) {
       </thead>
       <tbody>
         {products.map (eachProd => {
-          return <AdminRow key={eachProd.id} product={eachProd} deleteProduct={deleteProduct}
+          return <AdminRow key={eachProd._id} product={eachProd} deleteProduct={deleteProduct}
           editFillForm={editFillForm}/>
         })
       }

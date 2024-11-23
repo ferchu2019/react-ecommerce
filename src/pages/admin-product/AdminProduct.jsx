@@ -5,6 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import AdminTable from "../../components/admin-table/AdminTable";
 import Swal from "sweetalert2";
+import {useUser} from "../../context/UserContext"
 
 const URL = import.meta.env.VITE_LOCAL_SERVER;
 
@@ -20,12 +21,13 @@ export default function AdminProduct() {
   
   useEffect(() => {getProducts(); getCategories();}, [])
 
+
   useEffect(() => { 
     if(selectedProduct) {
       setValue("name", selectedProduct.name), 
       setValue("price", selectedProduct.price), 
       setValue("description", selectedProduct.description), 
-      //setValue("image", selectedProduct.image),
+      setValue("image", selectedProduct.image),
       setValue("category", selectedProduct.category),
       setValue("createdAt", selectedProduct.createdAt)
       }else{
@@ -75,16 +77,26 @@ export default function AdminProduct() {
   
   async function loadProduct(productData){
    console.log(productData)
+  
    try {
+    const formData = new FormData();
+    formData.append("name", productData.name);
+    formData.append("price", productData.price);
+    formData.append("description", productData.description);
+    formData.append("category", productData.category);
+    if(productData.image[0]){
+      formData.append("image", productData.image[0]);
+    }
+
     if(selectedProduct){
-      const {_id: id}= selectedProduct;
-      const response = await axios.put(`${URL}/products/${id}`, productData);
+      const {_id}= selectedProduct;
+      const response = await axios.put(`${URL}/products/${_id}`, formData);
       console.log(response.data);
       Swal.fire({ title:"Producto actualizado", text:"El producto fue actualizado correctamente", icon:"success", timer:1500})
       setSelectedProduct(null)
 
       }else{
-        const response = await axios.post(`${URL}/products`,productData)
+        const response = await axios.post(`${URL}/products`, formData)
         console.log(response.data)
         Swal.fire({ title:"Producto creado", text:"El producto fue creado correctamente", icon:"success", timer:1500})
         reset()
@@ -129,7 +141,7 @@ export default function AdminProduct() {
           </div>
           <div className="input_container">
             <label htmlFor="image">Imagen</label>
-            <input type="url" id="image" {...register("image") }/>
+            <input accept="image/*" type="file" id="image" {...register("image") }/>
           </div>
           <div className="input_container">
              <button className={`btn ${selectedProduct && 'btn-success'}`} type="submit" disabled={!isValid}>{selectedProduct? "Editar":"Cargar producto"}</button>
@@ -137,7 +149,7 @@ export default function AdminProduct() {
       </form>
     </div>
     <div className="table_container">
-      <AdminTable products={products} deleteProduct={deleteProduct} editFillForm={editFillForm}/>
+      <AdminTable products={products} key={products._id} deleteProduct={deleteProduct} editFillForm={editFillForm}/>
     </div>
   </div>
   </>)

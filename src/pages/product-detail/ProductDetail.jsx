@@ -15,12 +15,12 @@ export default function ProductDetail() {
   const [product, setProduct] = useState()
   const {_id} = useParams();
 
-  useEffect(() => {getProduct();},[])
+  useEffect(() => {getProduct(); },[])
 
   async function getProduct() {
     try {
       const response = await axios.get(`${URL}/products/${_id}`)
-      setProduct(response.data)
+      setProduct(response.data.products)
 
     } catch (error) {
       alert("error al obtener el producto")
@@ -38,7 +38,7 @@ export default function ProductDetail() {
       <div className="item_info">
         <h1 className='product_name'>{product?.name}</h1>
         <p className="product_desc">{product?.description}</p>
-        <p>Año de publicación: {product?.createdAt}</p>
+        <p>Año de publicación: {formatDate(product?.createdAt)}</p>
         <div className="formas_de_pago"> <FontAwesomeIcon icon={faCreditCard}></FontAwesomeIcon> Paga con Tarjeta hasta 3 cuotas </div>
         <div className="formas_de_envio"><FontAwesomeIcon icon={faTruck}></FontAwesomeIcon> Correo Express</div>
         <div className="purchase"><button onClick={() => addProduct(product)}> Añadir al carrito </button></div>

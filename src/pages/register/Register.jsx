@@ -27,7 +27,14 @@ export default function Register() {
   async function newRegister(userData){
    console.log(userData)
    try {
-      const response = await axios.post(`${URL}/users`,userData)
+      const formData = new FormData();
+      formData.append("name", userData.name);
+      formData.append("email", userData.email);
+      formData.append("phone", userData.phone);
+      formData.append("date_birth", userData.date_birth);
+      formData.append("country", userData.country);
+    
+      const response = await axios.post(`${URL}/users`, formData)
         console.log(response.data)
         
       } catch (error) {

@@ -3,7 +3,7 @@ import OrderItem from '../order-item/OrderItem';
 import './orderDialog.css'
 
 export default function OrderDialog() {
-    const {order, toggleModal, setToggleModal, total} = useOrder();
+    const {order, toggleModal, setToggleModal, total, createOrder} = useOrder();
     console.log(toggleModal)
     
     if(!toggleModal) return;
@@ -16,14 +16,14 @@ export default function OrderDialog() {
                 </div>
                 <div className="modal-body">
                     <ul className="order-list">
-                        {order.map((item) => <OrderItem key={item.id} item={item} />)}
+                        {order.map((item) => <OrderItem key={item._id} item={item} />)}
                         <br />
                         <li className='order-total'>Total compra <strong>$ {total}</strong></li>
                     </ul>
                 </div>
                 <div className="modal-footer">
                     <button  onClick = {() => setToggleModal(!toggleModal)}>Cerrar</button>
-                    <button >Finalizar compra</button>
+                    <button onClick={() => createOrder()} >Finalizar compra</button>
                 </div>
             </div>
         </div>
